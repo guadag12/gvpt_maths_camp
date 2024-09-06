@@ -1,0 +1,116 @@
+---
+title: "Problem Set 1"
+subtitle: "Due date: Wednesday, 11 September"
+format: 
+  html:
+    self-contained: true
+editor: visual
+execute: 
+  echo: true
+  warning: false
+---
+
+Please upload your completed assignment to the ELMs course site (under the assignments menu) and to your class Github repository. You need to upload both your Quarto document (with R code, as needed) and its rendered output (either as a PDF or HTML file).
+
+**Total points: 25**
+
+::: callout-note
+To complete this problem set, you will need access to the `polisciols` R package. This package is not published on CRAN[^1], so you will need to install it using the following code:
+
+```{r}
+#| eval: false
+
+install.packages("devtools")
+
+devtools::install_github("hgoers/polisciols")
+```
+
+Remember, you only need to do this once on your computer. Run this in the console. Do not include it in your Quarto document.
+:::
+
+[^1]: The [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/) hosts many R packages that can be installed easily using the familiar `install.packages()` function. These packages have gone through a comprehensive quality assurance process. I wrote `polisciols` for this class and will update it regularly. I, therefore, will not host it through CRAN: the quality assurance process takes too long to be practical for our weekly schedule. Instead, you are downloading it directly from its Github repository.
+
+The [American National Election Studies](https://electionstudies.org/) surveys a representative sample of US voters prior to and following each US Presidential Election. We will use their survey from the last US Presidential Election (held in 2020) to learn more about US voters.
+
+::: callout-tip
+The `nes` data set in the `polsciols` R package provides you with a selection of the hundreds of questions the ANES asked of all `r nrow(polisciols::nes) |> scales::comma()` respondents to the 2020 survey. Each row provides data for one respondent.
+:::
+
+## Question 1
+
+Prior to the 2020 US Presidential Election, the ANES asked respondents their highest level of school completed or highest degree received.
+
+### Part A
+
+*Points: 2*
+
+What was the most common highest level of education obtained by respondents? What was the least common? *Use the `education` variable from the `nes` data set to answer these questions.*
+
+### Part B
+
+*Points: 2*
+
+Describe the distribution of the total number of respondents that obtained each highest level of education. Include a plot of those counts.
+
+## Question 2
+
+The ANES also asked each respondent how often they pay attention to what is going on in government and politics. Let's use these responses to learn more about how much attention US voters pay to politics ahead of a Presidential election.
+
+### Part A
+
+*Points: 2*
+
+How often did individuals pay attention to what was going on in government and politics? What was the most popular level of attention? What was the least? *Use the `attention_to_politics` variable from the `nes` data set to answer these questions.*
+
+### Part B
+
+*Points: 3*
+
+Describe the distribution of the total number of respondents who provided each answer to this question. Does this distribution indicate that individuals tend to pay very little, a moderate, or a lot of attention to politics prior to a US Presidential Election? Include a plot of these counts in your answer.
+
+## Question 3
+
+Examine the following vector of (fake) student IQ test scores:
+
+```{r}
+iq <- c(
+  145, 139, 126, 122, 125, 130, 96, 110, 118, 118, 101, 142, 134, 124, 112, 109, 
+  134, 113, 81, 113, 123, 94, 100, 136, 109, 131, 117, 110, 127, 124, 106, 124, 
+  115, 133, 116, 102, 127, 117, 109, 137, 117, 90, 103, 114, 139, 101, 122, 105, 
+  97, 89, 102, 108, 110, 128, 114, 112, 114, 102, 82, 101
+)
+```
+
+### Part A
+
+*Points: 3*
+
+Find the five-number summary, mean, and standard deviation for these data. Do you think any of these students might be outliers in this distribution? If so, what IQ test score did they get and how do you know?
+
+### Part B
+
+*Points: 3*
+
+In large populations, IQ test scores are standardized to have a mean of 100 and a standard deviation of 15. In what way does the distribution among these students differ from the overall population? Do not use the words and phrases "mean" or "standard deviation" in your answer.
+
+## Question 4
+
+*Points: 4*
+
+The ANES collects information about each respondent's demographics, including their race, age, household income, and party affiliation. Provide the "type" (categorical or continuous) of variable each of those demographic characteristics represents.
+
+## Question 5
+
+The ANES also asked respondents prior to the election to rate Joe Biden and Donald Trump on a scale from 0 to 100.
+
+### Part A
+
+*Points: 3*
+
+Plot all respondents' answers to these two questions on a single density plot. There are several peaks in these distributions. What do these peaks have in common? What might they suggest about how people answer questions that ask them to provide a single number along a large range?
+
+### Part B
+
+*Points: 3*
+
+President Biden won this election. Would you predict this outcome from the way this representative sample responded to these questions? Provide a brief description of the reasoning behind your answer.
