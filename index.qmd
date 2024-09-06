@@ -15,7 +15,7 @@ format:
     height: 900
     incremental: false
     footer: "<div class='custom-footer'><span>Scraping with [RSelenium](https://github.com/ropensci/RSelenium)</span><img src='https://github.com/guadag12/repo_datasets/raw/master/logo-umd/umd.png' class='footer-logo' /></div>"
-    theme: [default, style]
+    theme: [default, style.scss]
     link-external-newwindow: true
     df-print: kable
     footer-logo-link: "https://umd.edu/"
